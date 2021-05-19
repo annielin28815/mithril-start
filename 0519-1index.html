@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>實作呼叫兩個button</title>
+  <script src="https://unpkg.com/mithril/mithril.js"></script>
+</head>
+<body>
+  <div id="main">
+    <script>
+      let main = document.querySelector("#main")
+      m.render(main, "Hello") // 等同main.innerHTML = "Hello"  => 靜態渲染
+
+      let Btn ={
+        view:function(v){
+          console.log(v); // 可到網頁的console看v涵括了哪些。
+          return m("button", {
+            // 屬性 
+            style: {
+              fontSize: "20px",
+              padding: "5px 10px",
+              margin: "5px 10px",
+              background: "#fa0",
+              borderRadius: "5px",
+              border: "none"
+            },
+            id: "btn",
+            class: "btn",
+            onmouseover: () => { // 滑鼠hover當下
+              v.dom.style.background = "#f00"
+            },
+            onmouseout: () => { // 滑鼠hover移開後
+              v.dom.style.background = "#fa0"
+            }
+          },
+            // 渲染的內容
+            v.attrs.name
+          )
+        }
+      }
+      let Home = {
+        view:function(vnode){
+          return m("", [
+            m(Btn, {  // 引入第15行的Btn
+              name: "Hello"  // 可將原本組件的內容改變
+            }),
+            m(Btn, { // 引入第15行的Btn
+              name: "world"  // 可將原本組件的內容改變
+            })
+          ])
+        }
+      }
+
+      m.mount(main, Home)
+
+    </script>
+  </div>
+</body>
+</html>

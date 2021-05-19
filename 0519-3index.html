@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生命週期</title>
+  <script src="https://unpkg.com/mithril/mithril.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <script>
+      let main = document.querySelector("#main")
+
+      let Btn = () => {
+        let bgColor = "#eee"
+        return {
+          view: function (v) {
+            _this = this
+            return m("button", {
+              // 屬性 
+              style: {
+                fontSize: "20px",
+                padding: "5px 10px",
+                margin: "5px 10px",
+                background: bgColor,
+                borderRadius: "5px",
+                border: "none"
+              },
+              id: "btn",
+              class: "btn",
+              onmouseover: () => { // 滑鼠hover當下
+                bgColor = "#aaa"
+              },
+              onmouseout: () => { // 滑鼠hover移開後
+                bgColor = "#eee"
+              }
+            },
+              // 渲染的內容
+              v.attrs.name
+            )
+          }
+        }
+      }
+      let Home = {
+        view: function (vnode) {
+          return m("", [
+            m(Btn, {  // 引入第15行的Btn
+              name: "Hello"  // 可將原本組件的內容改變
+            }),
+            m(Btn, { // 引入第15行的Btn
+              name: "world"  // 可將原本組件的內容改變
+            })
+          ])
+        }
+      }
+
+      m.mount(main, Home)
+
+    </script>
+  </div>
+</body>
+
+</html>
