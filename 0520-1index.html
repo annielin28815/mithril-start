@@ -14,9 +14,11 @@
       let main = document.querySelector("#main")
 
       let Btn = () => {
-        let bgColor = "#eee"
         return {
-          view: function (v) {
+        data:{
+          bgColor:"#eee"
+        },
+        view: function (v) {
             _this = this
             return m("button", {
               // 屬性 
@@ -24,34 +26,44 @@
                 fontSize: "20px",
                 padding: "5px 10px",
                 margin: "5px 10px",
-                background: bgColor,
+                background: _this.data.bgColor,
                 borderRadius: "5px",
                 border: "none"
               },
-              id: "btn",
-              class: "btn",
+              id: "btn1",
+              class: "btn1",
               onmouseover: () => { // 滑鼠hover當下
-                bgColor = "#aaa"
+                _this.data.bgColor = "#fa0"
               },
               onmouseout: () => { // 滑鼠hover移開後
-                bgColor = "#eee"
+                _this.data.bgColor = "#eee"
               }
             },
               // 渲染的內容
-              v.attrs.name
+              v.children[0]
             )
           }
         }
       }
       let Home = {
+        oninit: function (v) {
+          // console.log(v); // undefine
+        },
+        oncreate: function () {
+          // console.log(v); // dom元素
+        },
+        onupdate: function () { },
+        onbeforeupdate: function () { },
+        onremove: function () { },
+        onbeforeremove: function () { },
         view: function (vnode) {
           return m("", [
             m(Btn, {  // 引入第15行的Btn
-              name: "Hello"  // 可將原本組件的內容改變
-            }),
+              name: "Btn1"  // 可將原本組件的內容改變
+            },["Btn1"]),
             m(Btn, { // 引入第15行的Btn
-              name: "world"  // 可將原本組件的內容改變
-            })
+              name: "Btn2"  // 可將原本組件的內容改變
+            },["Btn2"])
           ])
         }
       }
