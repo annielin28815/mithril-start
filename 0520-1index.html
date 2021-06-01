@@ -58,6 +58,7 @@
         onbeforeremove: function () { },
         view: function (vnode) {
           return m("", [
+            m("","This is a homepage."),
             m(Btn, {  // 引入第15行的Btn
               name: "Btn1"  // 可將原本組件的內容改變
             },["Btn1"]),
@@ -67,9 +68,22 @@
           ])
         }
       }
+      
+      let Page = {
+        view:function(){
+          return m("",[
+            m("","This is a page.")
+           ])
+        }
+      }
 
-      m.mount(main, Home)
-
+      // 路由的寫法
+      // m.mount(main, Home)
+      m.route(main, "home", {
+        "/home": Home,  // 將網址後面接home，會引導到let Home = {...}這個頁面
+        "/page": Page,  // 將網址後面接page，會引導到let Page = {...}這個頁面
+      })
+      //  第一個參數是要渲染的地方，第二個參數是出路由，第三個參數是路由表。
     </script>
   </div>
 </body>
