@@ -13,7 +13,7 @@
     <script>
         var root = document.body
 
-        // m.mount 的功能和 m.render 类似。但 m.render 只会渲染一次 HTML，而 m.mount 会激活 Mithril 的自动重绘系统。我们通过添加一个事件，来帮助理解这一概念：
+        // m.mount 的功能和 m.render 類似。但 m.render 只會渲染一次 HTML，而 m.mount 會讓 Mithril 自動重繪。下面通過添加一个事件，來帮助理解這一個概念：
         
         // m.render(root, [
         // m() 函數可以描述任何 HTML 結構，创建多个元素。
@@ -28,7 +28,7 @@
 
         var Hello = {
             view: function(){
-            // m() 函數可以描述任何 HTML 結構，创建多个元素。
+            // m() 函數可以描述任何 HTML 結構，創建多个元素。
                 return m("main.container.text-center.bg-light.bg-gradient", [
                     m("h1", {class: "title"}, "My first app"),
                     m("p",  "Hello world"),

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Components - 在畫面上印出Hello Annie</title>
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+</head>
+
+<body>
+
+    <script>
+
+        "use strict"
+
+        // const m = require("mithril")
+
+        const MyComponent = {
+            view: function (vnode) {
+                return m("h1", "Hello ", vnode.attrs.name)      // -> 開主控台看，可發現在元素上看起來是"Hello "和"Annie"
+                // return m("h1", "Hello " + vnode.attrs.name)     -> 開主控台看，可發現在元素上看起來是"Hello Annie"
+            }
+        }
+
+        m.mount(document.body, {
+            view: function (vnode) {
+                console.log(vnode.attrs);
+                return m(MyComponent, { name: "Annie" })            // -> 會在畫面上印出 Hello Annie
+                // 等同 return m(MyComponent, { "name": "Annie" })     -> 會在畫面上印出 Hello Annie
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
